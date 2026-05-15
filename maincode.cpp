@@ -1,3 +1,12 @@
+/*
+EXCUSE  LETTER  VALIDATOR   is  a  program   that  analyzes  a  student's  excuse  letter 
+by scanning it for keywords. It categorizes keywords as `valid`, `weak`, or `suspicious`, 
+each  with  a  corresponding  score   and   bonus  system.  Based  on  the  total  score, 
+the  program   determines  whether  the  excuse  is   strong  enough  to  be   validated, 
+needs   a   professor's   approval,   or  is  rejected.  The  user  can  submit  multiple 
+excuses    in      a      single     session     until     they    choose    to     exit.
+*/
+
 #include <iostream>
 #include <map>
 #include <vector>
