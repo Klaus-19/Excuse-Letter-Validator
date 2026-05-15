@@ -11,7 +11,6 @@ excuses    in      a      single     session     until     they    choose    to 
 #include <map>
 #include <vector>
 #include <string>
-
 using namespace std;
 
 //DATA is here
