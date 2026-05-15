@@ -88,13 +88,13 @@ map<string, map<string, vector<string>>> KEYWORD_DATA = {
 };
 
 map<string, map<string, int>> KEYWORD_SCORES = {
-    {"valid",      {{"medical",90},  {"family",90},   {"official",90}}},
-    {"weak",       {{"vague",  45},  {"personal",45}, {"transport",45}}},
+    {"valid", {{"medical",90}, {"family",90}, {"official",90}}},
+    {"weak", {{"vague",  45}, {"personal",45}, {"transport",45}}},
     {"suspicious", {{"avoidance",5}, {"vague_excuse",5}, {"inconsistent",5}}}
 };
 
 map<string, int> BONUS = {
-    {"valid",+3}, {"weak",+1}, {"suspicious",-5}
+     {"valid",+3}, {"weak",+1}, {"suspicious",-5}
 };
 
 //lowercase a string is here
@@ -160,9 +160,14 @@ int main() {
     char again = 'Y';
 
     while (toupper(again) == 'Y') {
-        string input;
-        cout << "\nEnter your excuse:\n> ";
-        getline(cin, input);
+
+        // Read multiple lines until user types "END"
+        string input, line;
+        cout << "\nEnter your excuse letter (type END on a new line when done):\n";
+        while (getline(cin, line)) {
+            if (line == "END") break;
+            input += line + " ";
+        }
 
         int score = evaluate(input);
 
@@ -172,12 +177,10 @@ int main() {
         } else if (score >= 80) {
             cout << "\nWould you like your letter to be validated? (Y/N): ";
             char validate; cin >> validate; cin.ignore();
-
-            if (toupper(validate) == 'Y') {
+            if (toupper(validate) == 'Y')
                 cout << "\n[✓] Excuse validated. You are excused!\n";
-            } else {
+            else
                 cout << "\n[!] Validation skipped.\n";
-            }
 
         } else if (score >= 50) {
             cout << "\n[!] Weak excuse. Ask your professor for approval.\n"
@@ -190,12 +193,10 @@ int main() {
         } else {
             cout << "\nWould you like your letter to be validated? (Y/N): ";
             char validate; cin >> validate; cin.ignore();
-
-            if (toupper(validate) == 'Y') {
+            if (toupper(validate) == 'Y')
                 cout << "\n[X] Letter not valid. Please write a better excuse.\n";
-            } else {
+            else
                 cout << "\n[!] Validation skipped.\n";
-            }
         }
 
         cout << "\nSubmit another excuse? (Y/N): ";
